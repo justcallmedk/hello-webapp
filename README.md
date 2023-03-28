@@ -3,4 +3,4 @@
 Simplest way to create a mobile optimized web app.
 
 ## live demo
-https://sooda.io
+https://sooda.io (compatible w/ ios Safari only)
