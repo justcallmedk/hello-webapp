@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <div className="main">
         { install !== false ?
           <>
             <div className="accent accent1">
@@ -32,9 +32,9 @@ function App() {
             His horse's name is Friday.
           </div>
         }
-      </header>
+      </div>
       { install ?
-        <div className="install">
+        <div className="install accent1">
           <div>
             1. Click the share icon.
             <br/>
