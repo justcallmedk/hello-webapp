@@ -33,13 +33,22 @@
   color: #457B9D;
 }
 
-.install {
+.install-ios {
   text-align: center;
   position: absolute;
   bottom: 0;
   width: 100%;
   margin-bottom: 5px;
 }
-.install .down-icon{
+.install-ios .down-icon{
   font-size:20px;
+}
+
+.install-android {
+  text-align: right;
+  position: absolute;
+  top: 0;
+  right : 20px;
+  width: 100%;
+  margin-bottom: 5px;
 }

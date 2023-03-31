@@ -1,14 +1,23 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
 function App() {
-  const [install, setInstall] = useState(null);
+  const [install, setInstall] = useState({
+    ios : false,
+    android : false
+  });
 
   useEffect(() => {
-    if(window.navigator.userAgent.indexOf('iPhone') !== -1) {
-      if(window.navigator.standalone === true) {
-        setInstall(false);
-      } else {
-        setInstall(true);
+    if(window.navigator.userAgent.indexOf('iPhone') !== -1) { //iphone
+      if(window.navigator.standalone !== true) { // from browser
+        setInstall({
+          ios: true
+        });
+      }
+    } else if(window.navigator.userAgent.indexOf('Android') !== -1) { // android
+      if(!window.matchMedia('(display-mode: standalone)').matches) { // from browser
+        setInstall({
+          android: true
+        });
       }
     }
   }, []);
@@ -16,7 +25,7 @@ function App() {
   return (
     <div className="App">
       <div className="main">
-        { install !== false ?
+        { install.ios !== false || install.adroid !== false ?
           <>
             <div className="accent accent1">
               A cowboy rode into town on Friday.
@@ -33,18 +42,28 @@ function App() {
           </div>
         }
       </div>
-      { install ?
-        <div className="install accent1">
+      { install.ios ?
+        <div className="install-ios accent1">
           <div>
-            1. Click the share icon.
+            1. Click the share icon
             <br/>
-            2. Add to home screen.
+            2. Add to Home Screen
           </div>
           <div className="down-icon">
             ⇣
           </div>
         </div> : <></>
       }
+      { install.android ?
+        <div className="install-android accent1">
+          <div>
+            1. Click ⋮ above
+            <br/>
+            2. Add to Home Screen
+          </div>
+        </div>  : <></>
+      }
+
     </div>
   );
 }
