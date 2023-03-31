@@ -15,6 +15,9 @@ if(window.navigator.userAgent.indexOf('iPhone') !== -1) { //iphone
   } else { // from browser
     ...
   }
+} else { // pc browser
+  ...
+}
 ```
 
 ## live demo

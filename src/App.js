@@ -3,29 +3,36 @@ import React, { useEffect, useState } from 'react';
 function App() {
   const [install, setInstall] = useState({
     ios : false,
-    android : false
+    android : false,
+    riddle : false
   });
 
   useEffect(() => {
     if(window.navigator.userAgent.indexOf('iPhone') !== -1) { //iphone
       if(window.navigator.standalone !== true) { // from browser
         setInstall({
-          ios: true
+          ios: true,
+          riddle: true
         });
       }
     } else if(window.navigator.userAgent.indexOf('Android') !== -1) { // android
       if(!window.matchMedia('(display-mode: standalone)').matches) { // from browser
         setInstall({
-          android: true
+          android: true,
+          riddle: true
         });
       }
+    } else { // pc browser
+      setInstall({
+        riddle: true
+      });
     }
   }, []);
 
   return (
     <div className="App">
       <div className="main">
-        { install.ios !== false || install.adroid !== false ?
+        { install.riddle  ?
           <>
             <div className="accent accent1">
               A cowboy rode into town on Friday.
